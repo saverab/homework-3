@@ -1,0 +1,52 @@
+var x = 210;
+var y = 290;
+
+var x1 = x + 20;
+var y1 = y + 20;
+
+var r = 0;
+
+function setup() {
+  createCanvas(400, 400);
+}
+  
+function draw() {
+  background(0);
+  noStroke();
+
+  // draw smokestack
+  fill(255);
+  rect(195, height, 30, -100);
+
+  // darker as it gets closer to 0
+  push();
+  fill(y);
+  translate(x, y);
+  rotate(r);
+  rect(-10, -10, 20, 20);
+  pop();
+  
+  //box 2
+  push();
+  fill(y1);
+  translate(x1,y1);
+  rotate(r);
+  rect(-10, -10, 20, 20);
+  pop();
+
+  
+  // up 3 pixels
+  y -= 5;
+  y1 -= 5;
+  
+  // rotate 0.05 radians ~= 2.8 degrees per frame
+  r += 0.1
+  
+  // if reach past the top a bunch
+  if (y < -150) {
+    y = 290;
+  }
+   if (y1 < -150) {
+    y1 = 290;
+   }
+}
